@@ -1,2 +1,11 @@
 @import "fonts.css";
 @import "default.css";
+@import "header.css";
+@import "search.css";
+
+.search__btn, .header__favorite-btn {
+    border: none;
+    background-color: inherit;
+}
+
+/* HEADER & LIST CARD 14-43*/
