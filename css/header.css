@@ -23,6 +23,7 @@
 .header__favorite-btn {
     color: #fff;
     transition: color .2s ease-in-out;
+    line-height: 0;
 }
 
 .header__favorite-btn:hover {

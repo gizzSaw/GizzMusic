@@ -23,6 +23,8 @@
     position: absolute;
     right: 16px;
     top: 50%;
+    transform: translateY(-50%); 
+    line-height: 0;
 }
 
 
