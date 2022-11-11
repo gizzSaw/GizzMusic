@@ -5,8 +5,10 @@
 @import "catalog.css";
 @import "track.css";
 @import "track-info.css";
+@import "player.css";
 
-.search__btn, .header__favorite-btn {
+.search__btn, .header__favorite-btn, .catalog__btn-add, .player__icon {
+    
     border: none;
     background-color: inherit;
 }

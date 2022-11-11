@@ -50,7 +50,7 @@
     <section class="catalog">
         <h2 class="visually-hidden">Список треков</h2>
         <div class="catalog__container">
-            <button class="catalog__item track">
+            <button class="catalog__item track track_active">
                 <div class="track__img-wrap">
                     <img 
                         class="track__poster" 
@@ -64,7 +64,7 @@
                     <p class="track-info__artist">The weeknd</p>
                 </div>
             </button>
-            <button class="catalog__item track track_active">
+            <button class="catalog__item track">
                 <div class="track__img-wrap">
                     <img 
                         class="track__poster" 
@@ -256,14 +256,16 @@
                     <span>/</span>
                     <span class="player__time-total">4:20</span>
                 </p>
-                <div class="player__volume-wrap">
-                    <div class="player__volume">
-                        <input class="player__volume-input" type="range" min="0" max="100" value="100">
-                    </div>
+                
+            </div>
+            <div class="player__volume-wrap">
+                <div class="player__volume">
+                    <input class="player__volume-input" type="range" min="0" max="100" value="100">
                 </div>
-
                 <button class="player__icon player__icon_mute"></button>
             </div>
+
+            
         </div>
     </section>
 </body>
