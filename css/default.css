@@ -52,8 +52,8 @@ h1, h2, h3, p {
 }
 
 
-/* .track-info {
-    background-color: aqua;
-    width: 200px;
-
+/* @media (max-width: 740px) {
+    body {
+        padding-bottom: 187px;
+    }
 } */
