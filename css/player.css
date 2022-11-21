@@ -52,6 +52,7 @@
 
 .player__icon_play {
     background-image: url(../img/play.svg);
+    background-color: transparent;
 }
 
 .player__icon_next {

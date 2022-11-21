@@ -28,7 +28,8 @@ img, svg {
 button {
     padding: 0;
     cursor: pointer;
-    background-color: none;
+    background-color: transparent;
+    border: none
 }
 
 a {
