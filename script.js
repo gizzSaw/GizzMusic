@@ -252,42 +252,45 @@ const updateTime = () => {
 }
 
 const init = () => {
-    renderCatalog(dataMusic)
-    checkCount();
+  audio.volume = localStorage.getItem('volume') || 1;
+  playerVolumeInput.value = audio.volume * 100;
 
-    catalogAddBtn.addEventListener('click', () => {
+  renderCatalog(dataMusic)
+  checkCount();
+
+  catalogAddBtn.addEventListener('click', () => {
         [...tracksCard].forEach(trackCard => {
             trackCard.style.display = '';
             catalogAddBtn.remove();
         });
-    });
+  });
 
-    prevBtn.addEventListener('click', playMusic);
-    nextBtn.addEventListener('click', playMusic);
+  prevBtn.addEventListener('click', playMusic);
+  nextBtn.addEventListener('click', playMusic);
 
-    audio.addEventListener('ended', () => {
-      nextBtn.dispatchEvent(new Event('click', {bubbles: true}))
-    });
+  audio.addEventListener('ended', () => {
+    nextBtn.dispatchEvent(new Event('click', {bubbles: true}))
+  });
 
-    audio.addEventListener('timeupdate', updateTime);
+  audio.addEventListener('timeupdate', updateTime);
 
-    playerProgressInput.addEventListener('change', () => {
+  playerProgressInput.addEventListener('change', () => {
       const progress = playerProgressInput.value;
       audio.currentTime = (progress / playerProgressInput.max) * audio.duration; 
     });
 
-    favoriteBtn.addEventListener('click', () => {
+  favoriteBtn.addEventListener('click', () => {
       const data = dataMusic.filter( item => favoriteList.includes(item.id))
       renderCatalog(data);
       checkCount();
-    });
+  });
 
-    headerLogo.addEventListener('click', () => {
+  headerLogo.addEventListener('click', () => {
       renderCatalog(dataMusic);
       checkCount();
-    });
+  });
 
-    likeBtn.addEventListener('click', () => {
+  likeBtn.addEventListener('click', () => {
       const index = favoriteList.indexOf(likeBtn.dataset.idTrack);
       if(index === -1) {
         favoriteList.push(likeBtn.dataset.idTrack);
@@ -298,11 +301,29 @@ const init = () => {
       }
 
       localStorage.setItem('favorite', JSON.stringify(favoriteList));
-    });
+  });
+
+  playerVolumeInput.addEventListener('input', () => {
+    const value = playerVolumeInput.value;
+    audio.volume = value / 100; 
+  })
+
+  muteBtn.addEventListener('click', () => {
+      if (audio.volume) {
+        localStorage.setItem('volume', audio.volume)
+        audio.volume = 0;
+        muteBtn.classList.add('player__icon_mute-off');
+        playerVolumeInput.value = 0;
+      } else {
+        audio.volume = localStorage.getItem('volume');
+        muteBtn.classList.remove('player__icon_mute-off');
+        playerVolumeInput.value = audio.volume * 100;
+      };
+  });
 }
 
 init();
 
 
-// 46-46
+// 55-00
 
