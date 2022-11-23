@@ -107,7 +107,8 @@ const playerProgressInput = document.querySelector('.player__progress-input');
 const playerTimePassed = document.querySelector('.player__time-passed');
 const playerTimeTotal = document.querySelector('.player__time-total');
 const playerVolumeInput = document.querySelector('.player__volume-input');
-
+const playerTrackInfoTitle = document.querySelector('.player__track-info-title');
+const playerTrackInfoArtist= document.querySelector('.player__track-info-artist');
 
 
 const catalogAddBtn = document.createElement('button');
@@ -138,8 +139,9 @@ const pausePlayer = () => {
 
 const playMusic = event => {
     event.preventDefault();
-    const trackActive = event.currentTarget;
 
+    
+    const trackActive = event.currentTarget;
     if (trackActive.classList.contains('track_active')) {
         pausePlayer();
         return;
@@ -147,7 +149,6 @@ const playMusic = event => {
 
     let i = 0;
     const id = trackActive.dataset.idTrack;
-
     const index = favoriteList.indexOf(id);
       if(index !== -1) {
         likeBtn.classList.add('player__icon_like_active');
@@ -160,6 +161,7 @@ const playMusic = event => {
       return id === item.id;
     });
     audio.src = track.mp3;
+    updateTrackInfo(track.track, track.artist);
 
     audio.play();
     pauseBtn.classList.remove('player__icon_play');
@@ -250,6 +252,11 @@ const updateTime = () => {
   playerTimePassed.textContent = `${minutesPassed}:${secondsPassed < 10 ? '0' + secondsPassed : secondsPassed}`;
   playerTimeTotal.textContent = `${minutesDuration}:${secondsDuration}`;
 }
+
+const updateTrackInfo = (title, artist) => {
+  playerTrackInfoTitle.innerHTML = title;
+  playerTrackInfoArtist.innerHTML = artist;
+};
 
 const init = () => {
   audio.volume = localStorage.getItem('volume') || 1;
