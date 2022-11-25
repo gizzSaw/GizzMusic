@@ -109,7 +109,7 @@ const playerTimeTotal = document.querySelector('.player__time-total');
 const playerVolumeInput = document.querySelector('.player__volume-input');
 const playerTrackInfoTitle = document.querySelector('.player__track-info-title');
 const playerTrackInfoArtist= document.querySelector('.player__track-info-artist');
-
+const searchInput = document.querySelector('.search__input');
 
 const catalogAddBtn = document.createElement('button');
 catalogAddBtn.classList.add('catalog__btn-add');
@@ -327,10 +327,15 @@ const init = () => {
         playerVolumeInput.value = audio.volume * 100;
       };
   });
+
+  searchInput.addEventListener('input', (event) => {    
+    playlist = dataMusic.filter((song) => {
+      const songFullTitle =  `${song.artist} ${song.track}`.toLowerCase();
+      const filter = searchInput.value.toLowerCase();
+      return songFullTitle.indexOf(filter) > -1;
+    });
+    renderCatalog(playlist);
+  })
 }
 
 init();
-
-
-// 55-00
-
